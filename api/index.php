@@ -8,12 +8,14 @@ $user = 'default';
 $password = 'xXk9cTjer8uA';
 
 try {
-    // Establish a connection to the PostgreSQL database
-    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password");
+    // Establish a connection to the PostgreSQL database with SSL options
+    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password;sslmode=require");
+
+    // Set the PDO error mode to exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Prepare and execute the query to fetch all data from the table
-    $stmt = $pdo->query("SELECT * FROM data_customer");
+    $stmt = $pdo->query("SELECT * FROM your_table_name");
 
     // Fetch all rows as an associative array
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
