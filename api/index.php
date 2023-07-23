@@ -8,7 +8,8 @@ $password = 'xXk9cTjer8uA';
 
 try {
     // Establish a connection to the PostgreSQL database using libpq key=value syntax
-    $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
+    $connectionString = "host=$host port=$port dbname=$dbname user=$user password=$password sslmode=require";
+    $conn = pg_connect($connectionString);
 
     if (!$conn) {
         echo "Connection failed";
