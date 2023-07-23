@@ -1,14 +1,13 @@
 <?php
 // Replace the following variables with your actual PostgreSQL database credentials
-$host = 'ep-odd-paper-540852-pooler.us-east-1.postgres.vercel-storage.com';
-$port = '5432';
+$endpointId = 'p-odd-paper-540852.us-east-1.postgres.vercel-storage.com'; // Endpoint ID from your PostgreSQL database URL
 $dbname = 'vercel_db';
 $user = 'default';
 $password = 'xXk9cTjer8uA';
 
 try {
     // Establish a connection to the PostgreSQL database using libpq key=value syntax
-    $connectionString = "host=$host port=$port dbname=$dbname user=$user password=$password sslmode=require";
+    $connectionString = "host=$endpointId dbname=$dbname user=$user password=$password sslmode=require";
     $conn = pg_connect($connectionString);
 
     if (!$conn) {
