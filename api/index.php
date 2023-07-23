@@ -15,7 +15,7 @@ if (!$db) {
 }
 
 // Prepare the SQL query
-$query = "SELECT * FROM users;";
+$query = "SELECT * FROM data_customer;";
 
 // Execute the query
 $result = pg_query($db, $query);
