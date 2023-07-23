@@ -8,8 +8,11 @@ $user = 'default';
 $password = 'xXk9cTjer8uA';
 
 try {
-    // Establish a connection to the PostgreSQL database with SSL options
-    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password;sslmode=require");
+    // Build the endpoint parameter for SNI support
+    $endpointParam = "endpoint=$host";
+
+    // Establish a connection to the PostgreSQL database with SSL options and endpoint
+    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password;sslmode=require;$endpointParam");
 
     // Set the PDO error mode to exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
