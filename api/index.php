@@ -1,18 +1,14 @@
-
 <?php
 // Replace the following variables with your actual PostgreSQL database credentials
-$host = 'ep-odd-paper-540852-pooler.us-east-1.postgres.vercel-storage.com'; // Usually 'localhost' or provided by Vercel
-$port = '5432'; // Usually 5432
+$host = 'ep-odd-paper-540852-pooler.us-east-1.postgres.vercel-storage.com';
+$port = '5432';
 $dbname = 'vercel_db';
 $user = 'default';
 $password = 'xXk9cTjer8uA';
 
-// Replace the following variables with your actual PostgreSQL database credentials
-$connectionString = "host=your_postgres_host port=your_postgres_port dbname=your_database_name user=your_database_user password=your_database_password";
-
 try {
     // Establish a connection to the PostgreSQL database using libpq key=value syntax
-    $conn = pg_connect($connectionString);
+    $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
 
     if (!$conn) {
         echo "Connection failed";
@@ -20,7 +16,7 @@ try {
     }
 
     // Prepare and execute the query to fetch all data from the table
-    $query = "SELECT * FROM your_table_name";
+    $query = "SELECT * FROM your_table_name"; // Replace "your_table_name" with your actual table name
     $result = pg_query($conn, $query);
 
     if (!$result) {
@@ -40,4 +36,3 @@ try {
     echo "Error: " . $e->getMessage();
 }
 ?>
-
