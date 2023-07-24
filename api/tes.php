@@ -5,7 +5,10 @@ $dbhost = "ep-odd-paper-540852-pooler.us-east-1.postgres.vercel-storage.com";
 $dbname = "verceldb";
 $dbuser = "default";
 $dbpassword = "xXk9cTjer8uA";
-$conn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpassword options=endpoint=ep-odd-paper-540852");
+$dbopt = "endpoint=ep-odd-paper-540852";
+
+
+$conn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpassword options=$dbopt");
 
 // Get all the rows from the table
 $sql = "SELECT * FROM data_customer";
