@@ -7,12 +7,10 @@ $dbuser = "default";
 $dbpassword = "xXk9cTjer8uA";
 $dbopt = "endpoint=ep-odd-paper-540852";
 
-
 $conn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpassword options=$dbopt");
 
-
 // Check if the connection was successful
-if (!$db) {
+if (!$conn) {
     die("Connection failed: " . pg_last_error());
 }
 
@@ -20,7 +18,7 @@ if (!$db) {
 $query = "SELECT * FROM data_customer;";
 
 // Execute the query
-$result = pg_query($db, $query);
+$result = pg_query($conn, $query);
 
 // Check if the query was executed successfully
 if (!$result) {
@@ -33,5 +31,5 @@ while ($row = pg_fetch_assoc($result)) {
 }
 
 // Close the database connection
-pg_close($db);
+pg_close($conn);
 ?>
