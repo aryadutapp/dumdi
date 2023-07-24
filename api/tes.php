@@ -10,16 +10,28 @@ $dbopt = "endpoint=ep-odd-paper-540852";
 
 $conn = pg_connect("host=$dbhost dbname=$dbname user=$dbuser password=$dbpassword options=$dbopt");
 
-// Get all the rows from the table
-$sql = "SELECT * FROM data_customer";
-$result = pg_query($conn, $sql);
 
-// Echo all the rows
-while ($row = pg_fetch_assoc($result)) {
-    echo $row['column_name'] . PHP_EOL;
+// Check if the connection was successful
+if (!$db) {
+    die("Connection failed: " . pg_last_error());
 }
 
-// Close the connection
-pg_close($conn);
+// Prepare the SQL query
+$query = "SELECT * FROM data_customer;";
 
+// Execute the query
+$result = pg_query($db, $query);
+
+// Check if the query was executed successfully
+if (!$result) {
+    die("Query failed: " . pg_last_error());
+}
+
+// Fetch and display the data
+while ($row = pg_fetch_assoc($result)) {
+    echo "Full Name: " . $row['full_name'] . ", Gender: " . $row['gender'] . "<br>";
+}
+
+// Close the database connection
+pg_close($db);
 ?>
